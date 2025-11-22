@@ -31,15 +31,18 @@ public class LibraryRepository {
         }
         books.add(book);
     }
+    public void removeBookById(int id){
+        books.removeIf(x -> x.getId() == id);
+    }
     public Book findBookById(int id){
         for (Book x : books){
-            if(x.getId() == id){
+            if(Objects.equals(id, x.getId())){
                return x;
             }
         }
         return null;
     }
     public List<Book> listBooks(){
-        return books;
+        return new ArrayList<>(books);
     }
 }

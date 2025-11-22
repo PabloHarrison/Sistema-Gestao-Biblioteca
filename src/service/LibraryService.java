@@ -16,6 +16,9 @@ public class LibraryService {
     public void registerBook(Book book){
         repository.addBook(book);
     }
+    public void deleteBook(int id){
+        repository.removeBookById(id);
+    }
     public Book getBook(Integer id){
         return repository.findBookById(id);
     }

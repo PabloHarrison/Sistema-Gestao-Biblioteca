@@ -23,10 +23,14 @@ public class Menu {
             System.out.print("Enter: ");
 
             int option = sc.nextInt();
+            sc.nextLine();
 
             switch (option){
                 case 1:
                     addBook();
+                    break;
+                case 2:
+                    removeBookById();
                     break;
                 case 3:
                     findBook();
@@ -58,6 +62,7 @@ public class Menu {
             String author = sc.nextLine();
             System.out.print("Year of publication of the book: ");
             int year = sc.nextInt();
+            sc.nextLine();
 
             service.registerBook(new Book(id, title, author, year));
             System.out.println("Added successfully!\n");
@@ -67,9 +72,28 @@ public class Menu {
             sc.nextLine();
         }
     }
+    private void removeBookById(){
+        try{
+            System.out.print("Book ID: ");
+            int id = sc.nextInt();
+            sc.nextLine();
+            Book book = service.getBook(id);
+            if(book == null) {
+                System.out.println("Book not found.\n");
+            }else {
+                service.deleteBook(id);
+                System.out.println("Book removed!\n");
+            }
+        }
+        catch (InputMismatchException e){
+            System.out.println("Invalid input. Please type the correct data type.\n");
+            sc.nextLine();
+        }
+    }
     private void findBook(){
-        System.out.println("Enter the book ID: ");
+        System.out.print("Enter the book ID: ");
         int id = sc.nextInt();
+        sc.nextLine();
         Book found = service.getBook(id);
 
         if(found == null) {
