@@ -39,4 +39,7 @@ public class LibraryRepository {
         }
         return null;
     }
+    public List<Book> listBooks(){
+        return books;
+    }
 }

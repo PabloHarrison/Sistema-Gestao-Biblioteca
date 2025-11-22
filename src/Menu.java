@@ -2,6 +2,7 @@ import entities.Book;
 import service.LibraryService;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -29,6 +30,11 @@ public class Menu {
                     break;
                 case 3:
                     findBook();
+                    break;
+                case 4:
+                    System.out.println("------------------------------");
+                    listBooks();
+                    System.out.println("------------------------------");
                     break;
                 case 0: {
                     System.out.println("Closing...");
@@ -69,7 +75,18 @@ public class Menu {
         if(found == null) {
             System.out.println("Book not found.\n");
         }else{
-            System.out.println(found);
+            System.out.println(found + "\n");
+        }
+    }
+    private void listBooks(){
+        List<Book> bookList = service.getAllBooks();
+
+        if(bookList.isEmpty()){
+            System.out.println("No books found.");
+        }else {
+            for(Book book : bookList){
+                System.out.println(book);
+            }
         }
     }
 }

@@ -1,11 +1,9 @@
 package service;
 
 import entities.Book;
-import exception.DuplicateIdException;
-import exception.DuplicateTitleException;
 import repository.LibraryRepository;
 
-import java.util.Objects;
+import java.util.List;
 
 public class LibraryService {
 
@@ -20,5 +18,8 @@ public class LibraryService {
     }
     public Book getBook(Integer id){
         return repository.findBookById(id);
+    }
+    public List<Book> getAllBooks(){
+        return repository.listBooks();
     }
 }
